@@ -13,3 +13,81 @@ test_three = ""
 print(reverse_string(test_one))
 print(reverse_string(test_two))
 print(reverse_string(test_three))
+
+
+#----------------------------------------------------------------------
+#Capitalize a Letter
+#Start by capitalizing the first letter in the string
+#In this instance, it is safe to assume that after every space there will be a letter that needs capitalizing
+#and that there will only be one space and the string will not be empty
+#build a new sring and when you hit a space, capitalize the next letter
+def capitalize_first_letters(string_to_cap):
+    new_string = string_to_cap[0].upper()
+    index = 1
+    while(index < len(string_to_cap)):
+        if string_to_cap[index] == ' ':
+            new_string += string_to_cap[index]
+            index += 1
+            new_string += string_to_cap[index].upper()
+        else:
+            new_string += string_to_cap[index]
+        index += 1
+    return new_string
+
+test_one = "hello world"
+test_two = "Hello World"
+test_three = "hello"
+print(capitalize_first_letters(test_one))
+print(capitalize_first_letters(test_two))
+print(capitalize_first_letters(test_three))
+
+
+#----------------------------------------------------------------------
+#Determine if a word is a palindrome
+#Have a right index and a left index
+#Move the left one right one and move the right one left one
+#If they ever don't match, it's not a palindrome
+#continue checking until the indexes meet
+#it is safe to assume there are no spaces in this instance
+def is_a_palindrome(string_to_check):
+    left = 0
+    right = len(string_to_check) - 1
+    while left < right:
+        if(not string_to_check[left] == string_to_check[right]):
+            return False
+        left += 1
+        right -= 1
+    return True
+
+test_one = "madam"
+test_two = "Hello World"
+test_three = "noon"
+print(is_a_palindrome(test_one))
+print(is_a_palindrome(test_two))
+print(is_a_palindrome(test_three))
+
+
+#----------------------------------------------------------------------
+#Compress a string of characters
+def compress_string(string_to_compress):
+    index = 1
+    letter_compressing = string_to_compress[0]
+    number_found = 1
+    reverse_string = ''
+    while index < len(string_to_compress):
+        if(string_to_compress[index] == letter_compressing):
+            number_found += 1
+        else:
+            reverse_string += str(number_found) + letter_compressing
+            letter_compressing = string_to_compress[index]
+            number_found = 1
+        index += 1
+    reverse_string += str(number_found) + letter_compressing
+    return reverse_string
+
+test_one = "aaabbbbbccccaacccbbbaaabbbaaa"
+test_two = "aaaa"
+test_three = "abcdefg"
+print(compress_string(test_one))
+print(compress_string(test_two))
+print(compress_string(test_three))
