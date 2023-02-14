@@ -139,7 +139,7 @@ print(is_number_happy(88)) #should return False
 # If a number is not divisible by anything, then diving the number by all the numbers between 2 and one less than the 
 # number will always return a remainder greater than 0
 # It will take a long time, but we can brute force it by doing this for every number between 1 and 100
-# With the above descriptions, 1 is a special case, it's automatically prime
+# With the above descriptions, 1 is a special case, it's automatically not prime
 def is_prime(number):
     if number == 1:
         return False
@@ -151,3 +151,13 @@ def is_prime(number):
 for i in range(1, 100):
     if is_prime(i):
         print(f"The number {i} is Prime")
+
+# Create Fibonacci sequence
+
+def create_fibonacci(starting_number, how_many_numbers):
+    sequence = [starting_number, starting_number]
+    while(len(sequence) <= how_many_numbers):
+        sequence.append(sequence[-1] + sequence[-2])
+    return sequence
+
+print(create_fibonacci(1, 44))
